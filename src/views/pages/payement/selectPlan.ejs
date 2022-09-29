@@ -1,0 +1,46 @@
+<%- include("../../fragments/head.ejs") %>
+
+
+    <div class="auth-register-page page-section">
+        <h2 class="page-section__title">Select a Plan</h2>
+        <div class="page-section__content">
+
+            <div style="position:sticky; top:3.5rem;margin-top: 3rem; width: 100%;">
+                <ul style="display: flex; flex-direction: row; justify-content: center; gap: 1rem ; flex-wrap: wrap;">
+                    <% for(plan of plans){%>
+                        <li class="prices__item">
+                            <div class="price-card" style="background-color:rgb(47, 114, 219);">
+                                <h1>
+                                    <%= plan.title %>
+                                </h1>
+                                <ul>
+                                    <% for(feature of plan.features){%>
+                                        <li>
+                                            <div class="checkBox"></div>
+                                            <%= feature.title %>
+                                        </li>
+                                        <% } %>
+                                </ul>
+                                <h2>
+                                    starting from
+                                </h2>
+                                <div class="price" data-original-price="<%= plan.price %>$">
+                                    <%= plan.price - ((plan.price * plan.discount) / 100) %>$
+                                </div>
+
+                                <form action="/payment/checkout" method="POST">
+                                    <input type="hidden" name="plan_id" value="<%= plan.id %>">
+                                    <button type="submit" class="button1" id="checkout-button">Checkout</button>
+                                </form>
+                                <!-- <a href="/payement/checkout?plan_id=<%= plan.id%>" class="button1"
+                                    style="background-color: rgb(141, 141, 141); color: #fff;">Select</a> -->
+                            </div>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <%- include("../../fragments/end.ejs") %>

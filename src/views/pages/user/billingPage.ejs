@@ -1,0 +1,28 @@
+<%- include("../../fragments/head.ejs") %>
+
+
+    <div class="pricing page-section">
+        <h2 class="page-section__title">
+            <%= user.first_name %>'s Pofile
+        </h2>
+        <div class="horizontal-split page-section__content">
+            <div class="horizontal-split__left">
+                <%- include("../../components/side-menu.ejs") %>
+            </div>
+
+            <div class="horizontal-split__right">
+                <div class="profile-pages">
+                    <div id="billing-page" class="profile-page">
+                        <form action="/auth/login" method="post">
+
+
+                            <button type="submit" class="button1">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include("../../fragments/end.ejs") %>

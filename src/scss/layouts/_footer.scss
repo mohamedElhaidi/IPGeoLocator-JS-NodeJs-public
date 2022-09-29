@@ -1,0 +1,61 @@
+@use "../base/colors";
+@use "../base/mixins";
+
+
+.footer {
+    width: 100%;
+    min-height: 150px;
+    margin-bottom: 2rem;
+    margin-top: 5rem;
+    margin-inline: auto;
+    padding: 1rem;
+    padding-inline: 2rem;
+    border-radius: 3px;
+    color: colors.$footerColor;
+    background-color: colors.$footerBgColor;
+
+    &__left {
+        width: 346px;
+
+        &__aboutUs {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+
+        }
+    }
+
+    &__right {
+        width: 100%;
+    }
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-links-group {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+
+
+    padding: 1rem;
+    padding-inline: 2rem;
+
+    color: colors.$footerColor;
+    font-weight: 400;
+
+    &::before {
+        content: attr(data-title);
+        color: colors.$footerCategoryTitleColor;
+        text-transform: capitalize;
+    }
+
+    a {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

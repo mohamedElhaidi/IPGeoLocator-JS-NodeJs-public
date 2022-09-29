@@ -1,0 +1,9 @@
+<% if(locals.breadcrumb) {%>
+    <ul class="breadcrumb">
+        <% for (const bread of locals.breadcrumb) {%>
+            <li><a href="<%= bread.url %>">
+                    <%= bread.name %>
+                </a></li>
+            <%}%>
+    </ul>
+    <% }%>

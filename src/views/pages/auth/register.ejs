@@ -1,0 +1,115 @@
+<%- include("../../fragments/head.ejs") %>
+    <div class="auth-register-page page-section">
+        <h2 class="page-section__title">Register</h2>
+        <div class="page-section__content">
+            <div class="horizontal-split" style="align-items: center;">
+                <div style="max-width:550px; filter: contrast(1.8);">
+                    <img style="width: 100%;" src="/img/login.png" alt="">
+                </div>
+                <div class="">
+                    <%- include("../../components/alert-banner.ejs")%>
+                        <form id="reg-form" action="/auth/register" method="post">
+                            <div class="groups">
+                                <div class="group --maring-top-1">
+                                    <label for="first_name">
+                                        first name
+                                    </label>
+                                    <input type="text" id="first_name" name="first_name" placeholder="Joe">
+                                </div>
+                                <div class="group --maring-top-1">
+                                    <label for="last_name">
+                                        last name
+                                    </label>
+                                    <input type="text" id="last_name" name="last_name" placeholder="Fish">
+                                </div>
+                                <div class="group --maring-top-1">
+                                    <label for="email">
+                                        email
+                                    </label>
+                                    <input type="text" id="email" name="email" placeholder="example@domain.com">
+                                </div>
+                                <div class="group --maring-top-1">
+                                    <label for="password">
+                                        password
+                                    </label>
+                                    <input type="password" id="password" name="password"
+                                        placeholder="at least 8 characters">
+                                </div>
+                                <div class="group --maring-top-1">
+                                    <label for="repassword">
+                                        re-type password
+                                    </label>
+                                    <input type="password" id="repassword">
+                                </div>
+                                <div class="group --maring-top-1">
+                                    <label for="company">
+                                        company (optional)
+                                    </label>
+                                    <input type="text" id="company" name="company">
+                                </div>
+                                <div class="group --maring-top-1">
+                                    <label for="address1">
+                                        address 1
+                                    </label>
+                                    <input type="text" id="address1" name="address1">
+                                </div>
+                                <div class="group --maring-top-1">
+                                    <label for="code_postal">
+                                        code postal
+                                    </label>
+                                    <input type="text" id="code_postal" name="code_postal" placeholder="12345">
+                                </div>
+                                <div class="group --maring-top-1">
+                                    <label for="phone">
+                                        phone
+                                    </label>
+                                    <input type="text" id="phone" name="phone">
+                                </div>
+                                <button disabled id="reg-form-button" type="submit"
+                                    class="button1 --maring-top-2">Register</button>
+                            </div>
+                        </form>
+                        <script>
+                            const btn = document.querySelector("#reg-form-button");
+                            const form = document.querySelector("#reg-form");
+                            const email = document.querySelector("#email");
+                            const fname = document.querySelector("#first_name");
+                            const lname = document.querySelector("#last_name");
+                            const address1 = document.querySelector("#address1");
+                            const codePostal = document.querySelector("#code_postal");
+                            const phone = document.querySelector("#phone");
+                            const psw = document.querySelector("#password");
+                            const rpsw = document.querySelector("#repassword");
+                            btn.disabled = true;
+
+
+                            email.addEventListener("change", validate);
+                            fname.addEventListener("change", validate);
+                            lname.addEventListener("change", validate);
+                            address1.addEventListener("change", validate);
+                            codePostal.addEventListener("change", validate);
+                            phone.addEventListener("change", validate);
+                            psw.addEventListener("change", validate);
+                            rpsw.addEventListener("change", validate);
+                            // checking fields
+                            function validate(e) {
+                                if (!email.value ||
+                                    !fname.value ||
+                                    !lname.value ||
+                                    !address1.value ||
+                                    !codePostal.value ||
+                                    !phone.value ||
+                                    !psw.value ||
+                                    psw.value !== rpsw.value)
+                                    btn.disabled = true;
+                                else
+                                    btn.disabled = false;
+                            }
+                        </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <%- include("../../fragments/end.ejs") %>

@@ -1,0 +1,21 @@
+<%- include("../fragments/head.ejs") %>
+
+    <div class="page-section">
+        <h2 class="page-section__title">New API Key</h2>
+        <div class="page-section__content">
+            <%- include("../components/alert-banner.ejs")%>
+                <form action="/user/dashboard/api-keys/create" method="post">
+                    <div class="group">
+                        <label for="domain">
+                            domain
+                        </label>
+                        <input type="text" id="domain" name="domain" placeholder="www.example.com">
+                    </div>
+                    <button type="submit" class="button1">Save</button>
+                    <a href="/user/dashboard/api-keys" class="button1"
+                        style="background-color: rgb(255, 145, 0);margin-left: 1rem;">Back</a>
+                </form>
+        </div>
+    </div>
+
+    <%- include("../fragments/end.ejs") %>

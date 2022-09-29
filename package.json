@@ -1,0 +1,44 @@
+{
+  "name": "ipgeolocator-js-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "16.15.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "watch-sass": "sass  --watch src/scss/index.scss src/public/css/styles.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "@tomtom-international/web-sdk-maps": "^6.20.0",
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "connect-flash": "^0.1.1",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.0.2",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-mysql-session": "^2.1.8",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "joi": "^17.6.0",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.7.8",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "object-to-xml-string": "^0.0.2",
+    "request-ip": "^3.3.0",
+    "sequelize": "^6.21.4",
+    "sequelizer": "^1.1.4",
+    "stripe": "^10.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "sass": "^1.54.8"
+  }
+}

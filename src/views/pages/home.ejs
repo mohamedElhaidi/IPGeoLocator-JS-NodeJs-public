@@ -1,0 +1,252 @@
+<%- include("../fragments/head.ejs") %>
+    <section class="hero">
+        <div class="hero__split">
+            <div class="hero__split__left">
+                <h1>Fast & Secure, Empower your creation!</h1>
+                <p>Free for non-commercial use, no API key required
+                    Easy to integrate, available in JSON, XML, CSV, Newline
+                    Serving more than 1 billion requests per day, trusted by thousands of businesses</p>
+                <a href="#demo" class="button1 --bg-blue-primary" style="font-size: 1.5rem;color:white">try
+                    it!</a>
+                <a href="/docs" class="button1"
+                    style="font-size: 1.2rem;background: rgb(0, 116, 224); color:white;">documentation</a>
+            </div>
+            <div class="hero__split__right">
+                <div style="background-image: url('/img/globe.png'); ">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="demo" class="page-section">
+        <h2 class="page-section__title">Demo</h2>
+        <div class="demo page-section__content">
+            <p style="font-size: 1.3rem; font-weight:300">Search any IP address/domain</p>
+            <div id="lookup-input" class="lookup-input">
+                <input type="text" placeholder="type an IP Address or a Domain" value="<%= ip  %>">
+                <button class="">SEND</button>
+            </div>
+            <div class="demo__result">
+                <div class="demo__result__result-wrap">
+                    <ul id="demo-result-list" class="demo__result__result-wrap__raw">
+                        <% for(key in locationDataInfo) { %>
+                            <li class="result-item">
+                                <div>
+                                    <%= key %>
+                                </div>
+                                <div>
+                                    <%= locationDataInfo[key] %>
+                                </div>
+
+                            </li>
+                            <%}%>
+                    </ul>
+                    <div class="demo__result__result-wrap__map" style="position: sticky; top: 0;">
+                        <div id="map" style="width: 100%; height: 500px; "></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                let map = null;
+                try {
+                    map = tt.map({
+                        key: "uJTowT9S6DdFOrRGMWkOTZnnGwyKIA73",
+                        container: "map",
+                        language: "",
+                    });
+
+                    map.on("load", () => {
+                        flyToPoinInMap(map, <%= locationDataInfo.lon %>, <%= locationDataInfo.lat %>);
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+                function generateDataItemElement(key, value) {
+                    const dataResultItemElement = document.createElement("li");
+                    dataResultItemElement.classList.add("result-item");
+                    dataResultItemElement.innerHTML = `<div>${key}</div>
+                                          <div>${value}</div>
+                                          `;
+                    return dataResultItemElement;
+                }
+
+                function flyToPoinInMap(map, lon, lat) {
+                    map.easeTo({ zoom: 7, center: [lon, lat] });
+                    const marker = new tt.Marker().setLngLat([lon, lat]).addTo(map);
+                }
+                try {
+                    const lookupInputGroup = document.querySelector("#lookup-input");
+                    const lookupInput = lookupInputGroup.querySelector("input[type=text]");
+                    const lookupButton = lookupInputGroup.querySelector("button");
+
+                    lookupButton.addEventListener("click", function (e) {
+                        const ipOrDomain = lookupInput.value;
+                        if (ipOrDomain)
+                            fetch("/api/json/" + ipOrDomain)
+                                .then((res) => {
+                                    return res.json();
+                                })
+                                .then((data) => {
+                                    console.log(data);
+                                    // update position on the map
+                                    flyToPoinInMap(map, data.lon, data.lat);
+                                    // update result list
+                                    const listElement = document.getElementById("demo-result-list");
+                                    listElement.innerHTML = "";
+                                    for (const key in data) {
+                                        if (Object.hasOwnProperty.call(data, key)) {
+                                            const value = data[key];
+                                            const el = generateDataItemElement(key, value);
+                                            listElement.appendChild(el);
+                                        }
+                                    }
+                                })
+                                .catch((err) => console.log(err));
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+            });
+        </script>
+    </section>
+    <section class=" page-section --text-align-center">
+        <h2 class="page-section__title">Get Started now!</h2>
+        <div class="demo page-section__content">
+            <p>Select a plan that will fit your needs, click on the pricing button!</p>
+            <a href="/pricing" class="button1 --bg-orange-primary --color-white --font-size-mid">Pricing</a>
+        </div>
+
+    </section>
+    <section id="testimonies" class="page-section">
+        <h2 class="page-section__title">Testimonies</h2>
+        <div class="demo page-section__content">
+            <p style="font-size: 1.3rem; font-weight:300"></p>
+            <article style="display: flex;flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 100%;">
+                <div class="testimonial-card">
+                    <div class="testimonial-card__avatar" style="background-image: url('https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=250&dpr=1');"></div>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus, eum consequatur? Expedita
+                        debitis
+                        rerum perferendis.</p>
+                    <div class="testimonial-card__author"><q>Hanter Codes</q></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__avatar" style="background-image: url('https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=250&dpr=1');"></div>
+                    <p>Lorem ipsum dolor sit.</p>
+                    <div class="testimonial-card__author"><q>Hanter Codes</q></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__avatar" style="background-image: url('https://images.pexels.com/photos/3831569/pexels-photo-3831569.jpeg?auto=compress&cs=tinysrgb&w=250&dpr=1');"></div>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus, eum consequatur?
+                        Expedita
+                        debitis
+                        rerum perferendis, nobis doloremque </p>
+                    <div class="testimonial-card__author"><q>Hanter Codes</q></div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section class="page-section">
+        <h2 class="page-section__title">Partners</h2>
+        <div class="page-section__content">
+            <div class="partners">
+                <ul>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                            <path
+                                d="M 25 11 C 11.15951 11 0 23.142126 0 38 L 2 38 C 2 24.139874 12.33049 13 25 13 C 37.66951 13 48 24.139874 48 38 L 50 38 C 50 23.142126 38.84049 11 25 11 z M 5 30 L 5 38 L 9 38 L 9 35 L 11 37 L 13 35 L 13 38 L 17 38 L 17 30 L 13 30 L 11 33 L 9 30 L 5 30 z M 23 30 L 18 38 L 22 38 L 22.681641 37 L 27.330078 37 L 28 38 L 32 38 L 27 30 L 23 30 z M 33 30 L 33 38 L 37 38 L 37 35 L 41 38 L 45 38 L 45 30 L 41 30 L 41 33 L 37 30 L 33 30 z M 25 33.265625 L 26.078125 35 L 23.919922 35 L 25 33.265625 z" />
+                        </svg>
+                        <span>company name</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                            <path
+                                d="M 13 4 C 10.97 4 9.4052969 5.7677656 9.4042969 9.0097656 C 9.4042969 11.126766 12.608219 16.5575 15.449219 21.3125 C 15.449219 9.0005 15.146 7.667 13 4 z M 19 4 C 16.812 7.604 16.550781 8.9995 16.550781 21.3125 C 19.391781 16.5575 22.595703 11.126766 22.595703 9.0097656 C 22.594703 5.7667656 21.03 4 19 4 z M 6 8 C 3.021 10.079 4.0009062 15.000422 5.5039062 16.607422 C 6.4969063 17.647422 10.35 19.52 14 22 L 6 8 z M 26 8 L 18 22 C 21.65 19.52 25.503094 17.647422 26.496094 16.607422 C 27.999094 15.000422 28.979 10.079 26 8 z M 2 16 C 2.048 21.542 5.4307969 23 7.7167969 23 L 13.431641 23 L 2 16 z M 30 16 L 18.568359 23 L 24.283203 23 C 26.569203 23 29.952 21.542 30 16 z M 5.1171875 24 C 5.4361875 25.654 6.1573281 27 8.2363281 27 C 10.315328 27 12.325641 25.8 13.431641 24 L 5.1171875 24 z M 18.568359 24 C 19.674359 25.8 21.684672 27 23.763672 27 C 25.842672 27 26.563813 25.654 26.882812 24 L 18.568359 24 z" />
+                        </svg>
+                        <span>company name</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                            <path
+                                d="M 25 11 C 11.15951 11 0 23.142126 0 38 L 2 38 C 2 24.139874 12.33049 13 25 13 C 37.66951 13 48 24.139874 48 38 L 50 38 C 50 23.142126 38.84049 11 25 11 z M 5 30 L 5 38 L 9 38 L 9 35 L 11 37 L 13 35 L 13 38 L 17 38 L 17 30 L 13 30 L 11 33 L 9 30 L 5 30 z M 23 30 L 18 38 L 22 38 L 22.681641 37 L 27.330078 37 L 28 38 L 32 38 L 27 30 L 23 30 z M 33 30 L 33 38 L 37 38 L 37 35 L 41 38 L 45 38 L 45 30 L 41 30 L 41 33 L 37 30 L 33 30 z M 25 33.265625 L 26.078125 35 L 23.919922 35 L 25 33.265625 z" />
+                        </svg>
+                        <span>company name</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                            <path
+                                d="M 25 11 C 11.15951 11 0 23.142126 0 38 L 2 38 C 2 24.139874 12.33049 13 25 13 C 37.66951 13 48 24.139874 48 38 L 50 38 C 50 23.142126 38.84049 11 25 11 z M 5 30 L 5 38 L 9 38 L 9 35 L 11 37 L 13 35 L 13 38 L 17 38 L 17 30 L 13 30 L 11 33 L 9 30 L 5 30 z M 23 30 L 18 38 L 22 38 L 22.681641 37 L 27.330078 37 L 28 38 L 32 38 L 27 30 L 23 30 z M 33 30 L 33 38 L 37 38 L 37 35 L 41 38 L 45 38 L 45 30 L 41 30 L 41 33 L 37 30 L 33 30 z M 25 33.265625 L 26.078125 35 L 23.919922 35 L 25 33.265625 z" />
+                        </svg>
+                        <span>company name</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="page-section__title">Questions & Answers</h2>
+        <div class="page-section__content">
+            <div class="questions">
+                <div class="question-card">
+                    <div class="question-card__wrap">
+                        <h3>How often do you update your database?
+                        </h3>
+                        <p>We update our database as soon as we have new information about an IP block. For each API
+                            request, you will always have the most accurate location data, without having to worry
+                            about
+                            updating a local database.</p>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="question-card__wrap">
+                        <h3>Are you still going to be here next year? Can I use your API in production?</h3>
+                        <p>IP-API has been running since 2012 and we are now providing one of the most popular and
+                            reliable IP Geolocation API.</p>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="question-card__wrap">
+                        <h3>Do I need an API key for the free endpoint?</h3>
+                        <p>We will never require an API key or registration and the API schema will not change. </p>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="question-card__wrap">
+                        <h3>How many requests can I do?</h3>
+                        <p>Our endpoints are limited to 45 HTTP requests per minute from an IP address. If you go
+                            over
+                            this limit your requests will be throttled (HTTP 429) until your rate limit window is
+                            reset.
+                            If you need unlimited queries, please see our pro service.</p>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="question-card__wrap">
+                        <h3>What is the average response time of the API?</h3>
+                        <p>With dedicated servers in US, EU and APAC, a network based on Anycast technology, and
+                            highly
+                            optimized software we achieve real response times of under 50 milliseconds in most parts
+                            of
+                            the world.</p>
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="question-card__wrap">
+                        <h3>Can I use your API on my commercial website?</h3>
+                        <p>We do not allow commercial use of the free endpoint. Please see our pro service for SSL
+                            access, unlimited queries, usage statistics and commercial support.</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <%- include("../fragments/end.ejs") %>

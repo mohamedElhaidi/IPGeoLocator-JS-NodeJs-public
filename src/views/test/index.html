@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            user-select: none;
+        }
+
+
+        body {
+            padding-top: 15px;
+            margin-inline: auto;
+            width: 900px;
+            height: 99999999px;
+            display: flex;
+            flex-direction: column;
+
+
+            /* justify-content: center; */
+            background-color: #050224;
+        }
+
+        .statistics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .statistic-card {
+            width: 300px;
+            border-radius: 7px;
+            padding: 1rem;
+            background-color: brown;
+            color: #fff;
+            border-left: solid yellow 5px;
+        }
+
+        .statistic-card p {
+            color: rgba(255, 255, 255, 0.747);
+            font-weight: 200;
+            font-size: 1rem;
+        }
+
+        .cumbread {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+
+            list-style: none;
+        }
+
+        .cumbread li:not(:last-child)::after {
+            content: "→";
+            margin-left: 0.5rem
+        }
+    </style>
+    <div class="auth-register-page page-section">
+        <h2 class="page-section__title">Register</h2>
+        <div class="page-section__content">
+            <ul class="cumbread">
+                <li><a href="#">DashBoard</a></li>
+                <li><a href="#">KEY</a></li>
+                <li><a href="#">History</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+</body>
+<script>
+
+
+    fetch("http://localhost:8080/api/json/22.33.12.1?key=1JCeqZ13PznzGLbJ", { headers: { Origin: "http://127.0.0.1:5500" } }).then(res => {
+        console.log(res)
+    }).catch(err => {
+        console.log(err);
+    })
+</script>
+
+</html>

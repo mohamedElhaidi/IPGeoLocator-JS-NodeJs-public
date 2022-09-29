@@ -1,0 +1,46 @@
+.lookup-input {
+    display: flex;
+    width: 60%;
+    height: 2.5em;
+    font-size: 100%;
+    margin-inline: auto;
+
+    >* {
+        margin: 0;
+        border: none;
+        height: 100%;
+        width: 100%;
+        font-size: 1em;
+    }
+
+    input[type=text] {
+        flex: 3;
+        letter-spacing: 5px;
+        padding-block: 0.8rem;
+        padding-inline: 2em;
+        border-bottom-left-radius: 2rem;
+        border-top-left-radius: 2rem;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    button {
+        flex: 1;
+        margin-left: 0;
+        border-bottom-right-radius: 2rem;
+        border-top-right-radius: 2rem;
+        text-transform: uppercase;
+        background-color: rgb(240, 160, 39);
+        text-transform: uppercase;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+
+        &:hover {
+            cursor: pointer;
+            color: white;
+            background-color: orange;
+        }
+    }
+}

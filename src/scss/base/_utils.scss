@@ -1,0 +1,33 @@
+@use "./colors";
+
+.--bg-blue-primary {
+    background-color: colors.$bluePrimaryColor;
+}
+
+.--bg-orange-primary {
+    background-color: colors.$orangePrimaryColor;
+}
+
+.--color-white {
+    color: #fff;
+}
+
+.--font-size-mid {
+    font-size: 1.2rem;
+}
+
+.--maring-top-2 {
+    margin-top: 2rem;
+}
+
+.--maring-top-1 {
+    margin-top: 1rem;
+}
+
+.--full-width {
+    width: 100%;
+}
+
+.--text-align-center {
+    text-align: center;
+}

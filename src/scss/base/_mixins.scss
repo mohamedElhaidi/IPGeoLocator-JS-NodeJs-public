@@ -1,0 +1,27 @@
+@mixin responsive($type) {
+    @if $type==phone {
+        @media (max-width:800px) {
+            @content;
+        }
+    }
+
+    @if $type==tablet {
+        @media (min-width:800px) {
+            @content;
+        }
+    }
+
+    @if $type==desktop {
+        @media (min-width:1300px) {
+            @content;
+        }
+    }
+}
+
+@function color($color-name) {
+    @return var(--#{
+ $color-name
+    }
+
+);
+}

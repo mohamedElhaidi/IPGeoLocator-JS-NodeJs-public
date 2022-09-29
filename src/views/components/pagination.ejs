@@ -1,0 +1,14 @@
+<%if(pagination){%>
+    <div class="pagination">
+        <a href="<%= url %>?offset=0&search=<%= query %>" class="button1">First</a>
+        <%for(page of pagination.pages){%>
+            <a href="<%= url %>?offset=<%= page * + pagination.numberPerPage%>&search=<%= query %>" class="button1 <% if(page===pagination.currentPage) {%> pagination__highlight
+                    <%} %>" <% if(page===pagination.currentPage) {%> disabled <%}%>>
+                    <%=page + 1%>
+            </a>
+            <%}%>
+                <a href="<%= url %>?offset=<%= (pagination.numberOfPages- 1) * + pagination.numberPerPage %>&search=<%= query %>"
+                    class="button1 --pagination-color">Last</a>
+    </div>
+
+    <%}%>

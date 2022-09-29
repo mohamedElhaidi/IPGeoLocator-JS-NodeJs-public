@@ -1,0 +1,116 @@
+<%- include("../../fragments/head.ejs") %>
+
+
+    <div class="pricing page-section">
+        <h2 class="page-section__title">
+            <%= user.first_name %>'s Pofile
+        </h2>
+        <div class="horizontal-split page-section__content">
+            <div class="horizontal-split__left">
+                <%- include("../../components/side-menu.ejs") %>
+            </div>
+
+            <div class="horizontal-split__right">
+                <div class="profile-pages">
+                    <%- include("../../components/alert-banner.ejs") %>
+                        <div id="information-page" class="profile-page">
+                            <form action="/auth/update" method="post">
+                                <div class="group">
+                                    <label for="first-name">
+                                        first name
+                                    </label>
+                                    <input type="text" id="first-name" name="first_name" <% if(isAuthenticated) {%>
+                                    value="<%= user.first_name %>"
+                                        <% } %>>
+
+                                </div>
+                                <div class="group">
+                                    <label for="last-name">
+                                        last name
+                                    </label>
+                                    <input type="text" id="last-name" name="last_name" <% if(isAuthenticated) {%>
+                                    value="<%= user.last_name %>"
+                                        <% } %>>
+
+                                </div>
+                                <div class=" group">
+                                    <label for="email">
+                                        email
+                                    </label>
+                                    <input type="text" id="email" name="email" placeholder="example@domain.com" <%
+                                        if(isAuthenticated) {%>
+                                    value="<%= user.email %>"
+                                        <% } %>>
+
+                                </div>
+                                <div class="group">
+                                    <label for="company">
+                                        Company (optional)
+                                    </label>
+                                    <input type="text" id="company" name="company" <% if(isAuthenticated) {%>
+                                    value="<%= user.company %>"
+                                        <% } %>>
+
+                                </div>
+                                <div class="group">
+                                    <label for="address1">
+                                        Address 1
+                                    </label>
+                                    <input type="text" id="address1" name="address1" placeholder="" <%
+                                        if(isAuthenticated) {%>
+                                    value="<%= user.address1 %>"
+                                        <% } %>>
+
+                                </div>
+                                <div class="group">
+                                    <label for="address2">
+                                        Address 2 (optional)
+                                    </label>
+                                    <input type="text" id="address2" name="address2" <% if(isAuthenticated) {%>
+                                    value="<%= user.address2 %>"
+                                        <% } %>>
+
+                                </div>
+                                <div class="group">
+                                    <label for="city">
+                                        city
+                                    </label>
+                                    <input type="text" id="city" name="city" placeholder="ie: New York" <%
+                                        if(isAuthenticated) {%>
+                                    value="<%= user.city %>"
+                                        <% } %>>
+                                </div>
+                                <div class="group">
+                                    <label for="code-postal">
+                                        code postal (optional)
+                                    </label>
+                                    <input type="text" id="code-postal" name="code_postal" placeholder="ie: 12345" <%
+                                        if(isAuthenticated) {%>
+                                    value="<%= user.code_postal %>"
+                                        <% } %>>
+                                </div>
+                                <div class="group">
+                                    <label for="phone">
+                                        phone
+                                    </label>
+                                    <input type="text" id="phone" name="phone" placeholder="ie: +99 123456789" <%
+                                        if(isAuthenticated) {%>
+                                    value="<%= user.phone %>"
+                                        <% } %>>
+                                </div>
+                                <div class=" group">
+                                    <label for="password">
+                                        Current Password (IMPORTANT)
+                                    </label>
+                                    <input type="password" id="password" name="password" placeholder="************">
+                                </div>
+                                <button type="submit" class="button1">Save</button>
+                            </form>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include("../../fragments/end.ejs") %>

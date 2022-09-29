@@ -1,0 +1,70 @@
+<%- include("../../../fragments/head.ejs") %>
+
+    <div class="pricing page-section">
+        <h1 class="page-section__title">Documentation</h1>
+        <div class="page-section__content">
+            <article>
+                <section>
+                    <h2>Getting Started</h2>
+                    <p>The API base path is
+                        <code class="var1"><%=locals.APP_URL%>/json/{query}</code>
+                        {query} can be a single IPv4/IPv6 address or a domain name. If you don't supply a query the
+                        current IP address will be used.
+                    </p>
+                </section>
+                <section>
+                    <h2>Parameters</h2>
+                    <p>Query parameters (such as custom fields) are appended as GET
+                        request
+                        parameters, for example:
+                        <code class="var1"><%=locals.APP_URL%>/json/?fields=61439</code>
+                    </p>
+                    <div class="table">
+                        <table>
+                            <tr>
+                                <th class="table__head">fields</th>
+                                <td>response fields optional</td>
+                            </tr>
+                            <tr>
+                                <th class="table__head">lang</th>
+                                <td>response language optional</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+                <section>
+                    <h2>Quick test</h2>
+                    <p>You can edit this query and experiment with the options</p>
+
+                    <%- include("../../../components/demo-query-bar.ejs",{format:"json"}) %>
+                        <%- include("../../../components/code-block.ejs") %>
+                </section>
+                <section>
+                    <h2>Returned data</h2>
+                    <p>The API can return the following fields and values
+
+                        If you don't require all the returned fields, use the GET parameter fields to specify which data
+                        should be returned.
+                        Separate the fields by comma (fields=status,message,query,country,city) or use a generated,
+                        numeric value (to save bandwidth)</p>
+
+                    <p>Example:
+                        <code
+                            class="var2"><%=locals.APP_URL%>/json/{query}?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,query</code>
+                    </p>
+                    <%- include("../common/returned-data.ejs") %>
+                </section>
+                <section>
+                    <%- include("../common/localization.ejs") %>
+                </section>
+                <section>
+                    <%- include("../common/usage-limits.ejs") %>
+                </section>
+
+            </article>
+
+
+        </div>
+    </div>
+
+    <%- include("../../../fragments/end.ejs") %>

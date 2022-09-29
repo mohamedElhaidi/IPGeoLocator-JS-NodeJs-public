@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= pageTitle + " - " + locals.APP_NAME %>
+    </title>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Integrations -->
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.20.0/maps/maps.css'>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.20.0/maps/maps-web.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- style sheets and scripts -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js"></script>
+
+</head>
+
+<body>
+    <div class="navBar">
+        <div class="logo">
+            <a href="/">
+                <span>
+                    <%= locals.APP_NAME%>
+                </span>
+            </a>
+        </div>
+        <nav class="navigation">
+            <ul class="navigation__menu">
+                <li class="navigation__menu__item-link <%if(locals.page === "home") {%>active<%}%>"><a
+                            href="/">home</a></li>
+                <% if(!isAuthenticated){ %>
+                    <li class="navigation__menu__item-link <%if(locals.page === "pricing") {%>active<%}%>"><a
+                                href="/pricing">pricing</a></li>
+                    <% } %>
+                        <li class="navigation__menu__item-link <%if(locals.page === "docs") {%>active<%}%>"><a
+                                    href="/docs">docs</a></li>
+                        <li class="navigation__menu__item-menu ">
+                            <span>
+                                <%= isAuthenticated ? user.first_name : "user" %>
+                            </span>
+                            <div class="navigation__menu__item-menu__menu">
+                                <ul>
+                                    <% if(isAuthenticated){ %>
+                                        <li><a href="/user/dashboard">dashboard</a></li>
+                                        <li><a href="/user/profile">profile</a></li>
+                                        <% if(isAdmin){ %>
+                                            <li><a href="/admin/dashboard">admin</a></li>
+                                            <% } %>
+                                                <li><a href="/auth/logout">logout</a></li>
+                                                <% }else { %>
+                                                    <li><a href="/auth/login">login</a></li>
+                                                    <li><a href="/auth/register">register</a></li>
+                                                    <% } %>
+                                </ul>
+                            </div>
+                        </li>
+            </ul>
+            <div class="bg" onclick="closeNavMenu()"></div>
+        </nav>
+        <button onclick="toggleNavMenu()" class="nav-toggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <script>
+            const navMenuEl = document.querySelector(".navBar > nav ul");
+            function toggleNavMenu() {
+                navMenuEl.classList.toggle("toggle")
+            }
+            function closeNavMenu() {
+                navMenuEl.classList.remove("toggle")
+            }
+
+        </script>
+    </div>
+    <main>

@@ -1,0 +1,16 @@
+@use "../base/mixins";
+
+
+.pricing {
+
+
+    .prices {
+        color: rgb(2, 11, 134);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+
+}

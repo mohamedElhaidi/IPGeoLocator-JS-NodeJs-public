@@ -1,0 +1,36 @@
+@use "../base/mixins";
+@use "../base/colors";
+
+.page-section {
+    padding-block: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-inline: auto;
+    gap: 1rem;
+
+    width: 100%;
+    padding-inline: 1rem;
+    color: colors.$bluePrimaryColor;
+    text-align: center;
+
+    &__title {
+        font-size: 2rem;
+
+    }
+
+    &__content {
+        margin-inline: auto;
+
+        >* {
+            margin-top: 2rem;
+        }
+
+
+        @include mixins.responsive(tablet) {
+            width: 100%;
+        }
+
+    }
+}

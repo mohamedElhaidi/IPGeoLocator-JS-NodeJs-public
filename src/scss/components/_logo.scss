@@ -1,0 +1,15 @@
+@use "../base/colors";
+
+.logo {
+    display: inline-block;
+    flex: 1;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: colors.$navbarColor;
+
+    a {
+        color: colors.$logoColor;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,23 @@
+@use "../base/mixins";
+
+.horizontal-split {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    width: 100%;
+
+    @include mixins.responsive(tablet) {
+        grid-template-columns: auto 1fr;
+
+
+        > :first-child {
+            grid-column: 1;
+        }
+
+        > :last-child {
+            grid-column: 2;
+        }
+    }
+
+
+}

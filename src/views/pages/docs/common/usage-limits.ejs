@@ -1,0 +1,12 @@
+<h2>Usage limits</h2>
+<p>This endpoint is limited to 45 requests per minute from an IP address.</p>
+<p>If you go over the limit your requests will be throttled (HTTP 429) until your rate limit window
+    is reset. If you constantly go over the limit your IP address will be banned for 1 hour.</p>
+<p>The returned HTTP header X-Rl contains the number of requests remaining in the current rate limit
+    window. X-Ttl contains the seconds until the limit is reset.
+    Your implementation should always check the value of the X-Rl header, and if its is 0 you must
+    not send any more requests for the duration of X-Ttl in seconds.
+</p>
+<p>We do not allow commercial use of this endpoint. Please see our pro service for SSL access,
+    unlimited queries and commercial support.
+</p>

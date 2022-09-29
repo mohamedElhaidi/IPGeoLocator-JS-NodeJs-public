@@ -1,0 +1,47 @@
+<%- include("../../../fragments/head.ejs") %>
+
+    <div class="pricing page-section">
+        <h2 class="page-section__title">
+            <%= apiKeys.length %> APIs
+        </h2>
+        <div class="page-section__content horizontal-split">
+            <div class="horizontal-split__left">
+                <%- include("../../../components/side-menu-user-dashboard.ejs") %>
+            </div>
+            <div class="horizontal-split__right">
+                <div class="profile-pages">
+                    <div id="api-keys-page" class="profile-page">
+                        <div class="keys-container">
+                            <% for(apiKey of apiKeys){ %>
+                                <a href="/user/dashboard/api-keys/<%= apiKey.id %>" class=" item-card">
+                                    <div class="item-card__icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                                            <path
+                                                d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z" />
+                                        </svg>
+                                    </div>
+                                    <div class="item-card__title">
+                                        <h2>
+                                            Key: <%= apiKey.key %>
+                                        </h2>
+                                    </div>
+                                </a>
+                                <% } %>
+                                    <a href="/user/dashboard/api-keys/newApiKey" class="item-card">
+                                        <div class="item-card__icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                                            </svg>
+                                        </div>
+                                    </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include("../../../fragments/end.ejs") %>

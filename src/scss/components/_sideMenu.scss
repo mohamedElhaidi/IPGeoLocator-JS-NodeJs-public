@@ -1,0 +1,48 @@
+ul.side-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+
+
+    width: 300px;
+}
+
+.side-menu-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 3px;
+    border-left: solid 5px;
+
+    h3 {
+        text-transform: uppercase;
+        color: #050224;
+        background-color: #ffffff;
+
+        // margin-top: -25px;
+    }
+
+    >* {
+
+        padding-inline: 1rem;
+    }
+
+    >ul>li {
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.562);
+        display: block;
+        width: 100%;
+        cursor: pointer;
+        height: 2rem;
+
+        &:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        &.active {
+            color: yellow;
+        }
+    }
+
+}

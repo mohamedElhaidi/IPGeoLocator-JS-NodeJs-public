@@ -1,0 +1,41 @@
+@use "../base/mixins";
+@use "../base/colors";
+
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: colors.$bluePrimaryColor;
+    // 
+    padding: 1rem;
+    border-radius: 9px;
+    width: 100%;
+
+    @include mixins.responsive(tablet) {
+        width: min(20em, calc(5vw + 15em));
+        border: solid 3px;
+    }
+
+    &__title {
+        font-size: 1.9rem;
+        margin-top: -42px;
+        background-color: rgb(183, 217, 111);
+        color: rgb(15, 18, 170);
+        border-radius: 30px;
+        padding-inline: 1rem;
+
+        background-color: colors.$bluePrimaryColor;
+        color: rgb(255, 255, 255);
+        border-radius: 7px;
+        padding-inline: 1rem;
+    }
+
+    img {
+        width: 80%;
+    }
+
+    p {
+        font-weight: 500;
+    }
+}

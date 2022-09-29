@@ -1,0 +1,42 @@
+<%- include("../../fragments/head.ejs") %>
+
+
+    <div class="page-section">
+        <h2 class="page-section__title">Login</h2>
+        <div class="page-section__content">
+            <div class="horizontal-split" style="align-items: center;">
+                <div style="max-width:550px;filter: contrast(1.8);"><img style="width: 100%;" src="/img/login.png"
+                        alt="">
+                </div>
+                <div class="">
+                    <%- include("../../components/alert-banner.ejs")%>
+                        <form action="/auth/login" method="post">
+                            <div class="group --maring-top-2">
+                                <label for="email">
+                                    email
+                                </label>
+                                <input type="text" id="email" placeholder="example@domain.com" name="email">
+
+                            </div>
+                            <div class="group --maring-top-2">
+                                <label for="password">
+                                    password
+                                </label>
+                                <input type="password" id="password" placeholder="********" name="password">
+                            </div>
+
+                            <button type="submit" class="button1 --maring-top-2">Login</button>
+                            <a href="/auth/register" class="button1 --bg-orange-primary --color-white"
+                                style="background-color: rgb(255, 145, 0);margin-left: 1rem;">Register</a>
+                        </form>
+                        <a href="/auth/forgot-password"
+                            style="display:block;margin-top: 2rem; text-decoration:underline">Forgot
+                            the
+                            password?</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include("../../fragments/end.ejs") %>

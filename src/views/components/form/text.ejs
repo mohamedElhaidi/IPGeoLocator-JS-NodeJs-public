@@ -1,0 +1,29 @@
+<% 
+const randomNumber = Math.round(Math.random() * 999999);
+let elId= "";
+if(input.id) elId =  input.id;
+else elId= `input-text-id-${randomNumber}`; 
+
+let elName= "";
+if(input.name) elName = input.name.trim().toLowerCase(); 
+else elName = `input-text-name-${randomNumber}`;
+
+let elLabel= "";
+if(input.label) elLabel = input.label
+else elLabel = "Not specified" 
+
+let elPlaceholder= "";
+if(input.Placeholder) elPlaceholder = input.placeholder
+else elPlaceholder = "" 
+%>
+
+    <div class="group --maring-top-2">
+        <label for="<%=elId%>">
+            <%= elLabel%>
+        </label>
+        <input type="text" 
+                id="<%=elId%>" 
+                placeholder="<%=elPlaceholder%>" 
+                name="<%= elName%>"
+                >
+    </div>

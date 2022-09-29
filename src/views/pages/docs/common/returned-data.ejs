@@ -1,0 +1,169 @@
+<table class=" table-striped resp" id="fieldsTable">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>description</th>
+            <th>example</th>
+            <th>type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>status</strong></td>
+            <td><mark>success</mark> or <mark>fail</mark></td>
+            <td><em>success</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>message</strong></td>
+            <td>included only when <b>status</b> is <mark>fail</mark><br>Can be one of the
+                following: <a href="https://en.wikipedia.org/wiki/Private_network#Private_IPv6_addresses"
+                    target="_blank"><mark>private range</mark></a>, <a
+                    href="https://en.wikipedia.org/wiki/Reserved_IP_addresses" target="_blank"><mark>reserved
+                        range</mark></a>, <mark>invalid query</mark></td>
+            <td><em>invalid query</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>continent</strong></td>
+            <td>Continent name</td>
+            <td><em>North America</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>continentCode</strong></td>
+            <td>Two-letter continent code</td>
+            <td><em>NA</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>country</strong></td>
+            <td>Country name</td>
+            <td><em>United States</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>countryCode</strong></td>
+            <td>Two-letter country code <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1
+                    alpha-2</a>
+            </td>
+            <td><em>US</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>region</strong></td>
+            <td>Region/state short code (FIPS or ISO)</td>
+            <td><em>CA</em> or <em>10</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>regionName</strong></td>
+            <td>Region/state</td>
+            <td><em>California</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>city</strong></td>
+            <td>City</td>
+            <td><em>Mountain View</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>district</strong></td>
+            <td>District (subdivision of city)</td>
+            <td><em>Old Farm District</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>zip</strong></td>
+            <td>Zip code</td>
+            <td><em>94043</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>lat</strong></td>
+            <td>Latitude</td>
+            <td><em>37.4192</em></td>
+            <td>float</td>
+        </tr>
+        <tr>
+            <td><strong>lon</strong></td>
+            <td>Longitude</td>
+            <td><em>-122.0574</em></td>
+            <td>float</td>
+        </tr>
+        <tr>
+            <td><strong>timezone</strong></td>
+            <td>Timezone (tz)</td>
+            <td><em>America/Los_Angeles</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>offset</strong></td>
+            <td>Timezone UTC DST offset in seconds</td>
+            <td><em>-25200</em></td>
+            <td>int</td>
+        </tr>
+        <tr>
+            <td><strong>currency</strong></td>
+            <td>National currency</td>
+            <td><em>USD</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>isp</strong></td>
+            <td>ISP name</td>
+            <td><em>Google</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>org</strong></td>
+            <td>Organization name</td>
+            <td><em>Google</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>as</strong></td>
+            <td>AS number and organization, separated by space (RIR). Empty for IP blocks not being
+                announced in BGP tables.</td>
+            <td><em>AS15169 Google Inc.</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>asname</strong></td>
+            <td>AS name (RIR). Empty for IP blocks not being announced in BGP tables.</td>
+            <td><em>GOOGLE</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>reverse</strong></td>
+            <td>Reverse DNS of the IP (can delay response)</td>
+            <td><em>wi-in-f94.1e100.net</em></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><strong>mobile</strong></td>
+            <td>Mobile (cellular) connection</td>
+            <td><em>true</em></td>
+            <td>bool</td>
+        </tr>
+        <tr>
+            <td><strong>proxy</strong></td>
+            <td>Proxy, VPN or Tor exit address</td>
+            <td><em>true</em></td>
+            <td>bool</td>
+        </tr>
+        <tr>
+            <td><strong>hosting</strong></td>
+            <td>Hosting, colocated or data center</td>
+            <td><em>true</em></td>
+            <td>bool</td>
+        </tr>
+        <tr>
+            <td><strong>query</strong></td>
+            <td>IP used for the query</td>
+            <td><em>173.194.67.94</em></td>
+            <td>string</td>
+        </tr>
+    </tbody>
+</table>

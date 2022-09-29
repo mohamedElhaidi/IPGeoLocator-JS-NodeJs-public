@@ -1,0 +1,29 @@
+<%- include("../../fragments/head.ejs") %>
+
+
+    <div class="pricing page-section">
+        <h2 class="page-section__title">
+            Users(<%= table.pagination.itemCount %>)
+        </h2>
+        <div class="page-section__content horizontal-split">
+            <div class="horizontal-split__left">
+                <%- include("../../components/side-menu-admin.ejs") %>
+            </div>
+
+            <div class="horizontal-split__right">
+                <div class="profile-pages">
+                    <div id="users-page" class="profile-page">
+
+                        <%- include("../../components/admin/users-table.ejs", {table , url : "/admin/users" ,query
+                            :search})%>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <%- include("../../fragments/end.ejs") %>
+        </div>

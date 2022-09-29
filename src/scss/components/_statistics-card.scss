@@ -1,0 +1,14 @@
+.statistics-card {
+    width: 300px;
+    border-radius: 7px;
+    padding: 1rem;
+    background-color: rgb(32, 94, 209);
+    color: #fff;
+    border-left: solid yellow 5px;
+
+    p {
+        color: rgba(255, 255, 255, 0.747);
+        font-weight: 200;
+        font-size: 1rem;
+    }
+}

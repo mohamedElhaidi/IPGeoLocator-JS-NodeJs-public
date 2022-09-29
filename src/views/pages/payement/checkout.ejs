@@ -1,0 +1,42 @@
+<%- include("../../fragments/head.ejs") %>
+
+
+    <div class="auth-register-page page-section">
+        <h2 class="page-section__title">Payement</h2>
+        <div class="page-section__content">
+
+            <form id="payment-form" action="/auth/register" method="post">
+                <style>
+                    .split {
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 1rem;
+                    }
+                </style>
+                <div class="split">
+                    <div class="left">
+                        <img src="https://cdn3d.iconscout.com/3d/premium/thumb/app-ui-desing-5495850-4596621.png"
+                            alt="">
+
+                    </div>
+                    <div class="right">
+                        <div id="payement-message"></div>
+                        <div id="button-text"></div>
+                        <div id="spinner" style="height: 50px;width:50px; background:yellow;"></div>
+                        <div style="position:sticky; top:3.5rem;margin-top: 3rem; width: 100%; max-width: 300px;">
+                            <div id="payment-element">
+                                <!--Stripe.js injects the Payment Element-->
+                            </div>
+                            <button id="submit" type="submit" class="button1">Checkout</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script>
+        let plan_id = <%= plan_id %>;
+    </script>
+    <script src="/js/payement.js"></script>
+    <%- include("../../fragments/end.ejs") %>

@@ -1,0 +1,44 @@
+<%- include("../fragments/head.ejs") %>
+
+
+    <div class="page-section">
+        <h2 class="page-section__title">Editing an API</h2>
+        <div class="page-section__content">
+            <%- include("../components/breadcrumb.ejs")%>
+                <div style="display: flex; flex-wrap:wrap; gap:1rem">
+                    <div style="display: flex; flex-direction: column; gap:1rem">
+                        <div class="statistics-card">
+                            <div class="">
+                                <h1>API Info</h1>
+                                <p>Key: <%= apikey.key %>
+                                </p>
+                                <p>Allowed for: <%= apikey.domain %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="statistics-card">
+                            <div class="">
+                                <h1>Requests (<%= visitCount %>)</h1>
+                                <p>Total Requests: <%= successfulCount + failedCount %>
+                                </p>
+                                <p>Successful Requests: <%= successfulCount %>
+                                </p>
+                                <p>Failed Requests: <%= failedCount %>
+                                </p>
+                            </div>
+                        </div>
+                        <a class="button1"
+                            style="text-align:center;margin-top:0.3rem;min-width:100px;background-color:rgb(255, 255, 255);color:#050224"
+                            href="/user/dashboard/api-keys/<%=apikey.id%>/history">Log</a>
+                    </div>
+                    <div style="max-width: 650px;height: 100%; width: 100%;background: white;">
+                        <%- include("../components/chart.ejs", {options :requstsCountChartOptions})%>
+                    </div>
+                </div>
+
+
+
+        </div>
+    </div>
+
+    <%- include("../fragments/end.ejs") %>

@@ -1,0 +1,25 @@
+<%- include("../../fragments/head.ejs") %>
+
+
+    <div class="pricing page-section">
+        <h2 class="page-section__title">
+            Logs (<%= table.pagination.itemCount%>)
+        </h2>
+        <div class="page-section__content horizontal-split">
+            <div class="horizontal-split__left">
+                <%- include("../../components/side-menu-admin.ejs") %>
+            </div>
+
+            <div class="horizontal-split__right">
+                <div class="profile-pages">
+                    <%- include("../../components/table.ejs" ,{table , url : "/admin/logs" , query}) %>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <%- include("../../fragments/end.ejs") %>
+        </div>

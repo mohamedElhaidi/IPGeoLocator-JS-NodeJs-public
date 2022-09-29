@@ -1,0 +1,92 @@
+<style>
+    .resource-endpoint {
+        border-radius: 5px;
+        overflow: hidden;
+        width: 500px;
+        display: flex;
+        /* gap: 0.5rem; */
+        /* padding: 0.5rem; */
+        align-items: center;
+        background: #9175ff7a;
+        height: 45px;
+    }
+
+    .resource-endpoint__method {
+        height: 100%;
+        background: #4da41f;
+        padding: 0.5rem;
+    }
+
+    .resource-endpoint__endpoint {
+        flex: 1;
+        height: 100%;
+    }
+
+    .resource-endpoint__endpoint>input {
+        height: 100%;
+        width: 100%;
+        background: transparent;
+        border: none;
+        color: white;
+        padding: 0.5rem;
+    }
+
+    .resource-endpoint__submit {
+        background: #6d6dd5;
+        border: none;
+        color: white;
+        padding: 0.5rem;
+        height: 100%;
+        cursor: pointer;
+    }
+</style>
+
+
+<div class="resource-endpoint">
+    <div class="resource-endpoint__method">GET</div>
+    <div class="resource-endpoint__endpoint"><input type="text" id="enpoint-input"
+            value="<%=locals.APP_URL%>/api/<%= format%>/1.1.1.1">
+    </div>
+    <button onclick="tryit()" class="resource-endpoint__submit">Send</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"
+    integrity="sha512-HX+/SvM7094YZEKOCtG9EyjRYvK8dKlFhdYAnVCGNxMkA59BZNSZTZrqdDlLXp0O6/NjDb1uKnmutUeuzHb3iQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const tryit = () => {
+        const codeOutputEl = document.querySelector("#code-output");
+        codeOutputEl.innerHTML = "Loading ..."
+        const codeInputEl = document.querySelector("#enpoint-input");
+        fetch(codeInputEl.value).then(async r => {
+            if (r.status !== 200)
+                throw "error"
+            let obj = {};
+            const xmlParser = new X2JS();
+
+            const format = "<%= format%>";
+            let t = "";
+            switch (format) {
+                case "json":
+                    obj = await r.json();
+                    t = "{<br>";
+                    for (let key in obj) {
+                        t += `        "${key}" : "${obj[key]}" <br>`
+                    }
+                    t += "    }";
+                    break;
+                case "xml":
+                    t = xmlParser.json2xml_str(await r.text());
+                    break;
+                case "csv":
+                    t = await r.text();
+                    break;
+                case "line":
+                    t = await r.text();
+                    break;
+            }
+
+
+            codeOutputEl.innerHTML = t;
+        }).catch(err => { console.error(err); codeOutputEl.innerHTML = (err) })
+    }
+</script>

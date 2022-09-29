@@ -1,0 +1,27 @@
+@use "../base/colors";
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+    thead {
+        background-color: transparentize(colors.$orangePrimaryColor, 0.5);
+    }
+
+    td,
+    th {
+        border: 1px solid colors.$bluePrimaryColor;
+        text-align: left;
+        padding: 8px;
+    }
+
+    td {
+        word-wrap: break-word;
+        max-width: 150px;
+    }
+
+    tr:nth-child(even) {
+        background-color: transparentize(colors.$bluePrimaryColor, 0.5);
+    }
+}

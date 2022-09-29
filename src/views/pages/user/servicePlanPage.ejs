@@ -1,0 +1,41 @@
+<%- include("../../fragments/head.ejs") %>
+
+
+    <div class="pricing page-section">
+        <h2 class="page-section__title">
+            <%= user.first_name %>'s Pofile
+        </h2>
+        <div class="horizontal-split page-section__content">
+            <div class="horizontal-split__left">
+                <%- include("../../components/side-menu.ejs") %>
+            </div>
+
+            <div class="horizontal-split__right">
+                <div class="profile-pages">
+                    <% if(subscription) {%>
+                        <div id="service-plan-page" class="profile-page">
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <h3>Your current plan is: <%= subscription.plan.title %>
+                                </h3>
+                                <h4>started in: <%= subscription.start_date %>
+                                </h4>
+                                <h4>will end in: <%= subscription.end_date %>
+                                </h4>
+
+                            </div>
+                        </div>
+                        <% }else {%>
+                            <div id="service-plan-page" class="profile-page">
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <h3>You didn't order yet :(
+                                    </h3>
+                                </div>
+                            </div>
+                            <% }%>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include("../../fragments/end.ejs") %>

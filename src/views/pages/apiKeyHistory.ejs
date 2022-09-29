@@ -1,0 +1,18 @@
+<%- include("../fragments/head.ejs") %>
+    <div class="page-section">
+        <h2 class="page-section__title">History</h2>
+        <div class="page-section__content">
+            <%- include("../components/breadcrumb.ejs")%>
+                <div class="horizontal-split">
+                    <div class="horizontal-split__left">
+                        <!-- <%- include("../components/side-menu.ejs")%> -->
+                    </div>
+                    <div class="horizontal-split__right">
+                        <%- include("../components/table.ejs", {table , url : "/user/dashboard/api-keys/" + apikey.id
+                            + "/history" ,query :search})%>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    <%- include("../fragments/end.ejs") %>

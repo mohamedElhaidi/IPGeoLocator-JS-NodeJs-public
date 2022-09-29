@@ -1,0 +1,31 @@
+<%- include("../../../fragments/head.ejs") %>
+
+    <div class="pricing page-section">
+        <h2 class="page-section__title">Dashboard</h2>
+        <div class="page-section__content horizontal-split">
+            <div class="horizontal-split__left">
+                <%- include("../../../components/side-menu-user-dashboard.ejs") %>
+            </div>
+
+            <div class="horizontal-split__right">
+                <div style="display:flex ; flex-direction:row ; background: rgb(255, 255, 255) ; border-radius:5px; height: 400px; ">
+                    <div style="width: 100%; max-height: 100%">
+                        <canvas id="myChart" max-width="100%" max-height="100%" min-width="100%" min-height="100%"></canvas>
+                    </div>
+                    <div style="color:#fff;background:rgb(214, 118, 39); writing-mode: vertical-lr;
+                    text-orientation: mixed; 
+    padding: 1%;
+    text-align: center;">Top countries</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // init
+        const ctx = document.getElementById("myChart").getContext("2d");
+        const options = <%- JSON.stringify(countryChartOptions) %>;
+        const myChart = new Chart(ctx, options);
+    </script>
+    
+    <%- include("../../../fragments/end.ejs") %>

@@ -1,0 +1,108 @@
+<%- include("../../fragments/head.ejs") %>
+
+
+    <div class="page-section">
+        <h2 class="page-section__title">
+            <% if(plan){ %>
+                Editing "<%= plan.title %>" Plan
+                    <% }else { %>
+                        Creating a new plan
+                        <% } %>
+        </h2>
+        <div class="page-section__content">
+            <%- include("../../components/breadcrumb.ejs")%>
+            <div class="horizontal-split">
+            <div class="horizontal-split__left">
+                <!-- <%- include("../../components/side-menu-admin.ejs") %> -->
+            </div>
+
+            <div class="horizontal-split__right">
+                    <%- include("../../components/alert-banner.ejs",{errorMessage: errorMessage})%>
+                <form action="/admin/plans/<% if(plan){ %>update<% }else { %>create<% } %>" method="post">
+                        <div class="group">
+                            <label for="title">
+                                title
+                            </label>
+                            <input type="text" id="title" name="title" <% if(plan){ %>value="<%= plan.title %>"<% } %>>
+
+                        </div>
+
+                        <div class="group">
+                            <h3>
+                                features
+                            </h3>
+                            <% for(f of features) { %>
+                                <label for="features-<%= f.id %>">
+                                    <input class="checkBox" type="checkbox" id="features-<%= f.id %>" name="features[]"
+                                        value="<%= f.id %>" <% if(plan && planFeaturesIds &&
+                                        planFeaturesIds.includes(f.id)){ %> checked
+                                    <% } %>>
+                                        <%= f.title %>
+                                </label>
+
+                                <% } %>
+
+                        </div>
+
+                        <div class=" group">
+                            <h3>
+                                Cost
+                            </h3>
+                            <label for="is_free">
+                                <input class="checkBox" type="checkbox" id="is_free" name="isFree" <% if(plan &&
+                                    plan.isFree){ %>
+                                checked
+                                <%}%>>
+                                    cost free Plan?
+                            </label>
+                        </div>
+                        <div id="price">
+                            <div class=" group">
+                                <label for="price">
+                                    price
+                                </label>
+                                <input type="number" id="price" name="price" min="0" max="99999"
+                                    value="<% if(plan){ %><%= plan.price %><% }else{ %>0<%}%>">
+                            </div>
+                            <div class="group">
+                                <label for="discount">
+                                    discount
+                                </label>
+                                <input type="number" id="discount" name="discount" min="0" max="100"
+                                    value="<% if(plan){ %><%=plan.discount %><% }else{ %>0<%}%>">
+                            </div>
+                        </div>
+                        <script>
+                            const isFreeCB = document.querySelector("#is_free")
+                            const priceGP = document.querySelector("#price")
+                            function checkIsFree() {
+                                if (isFreeCB.checked)
+                                    priceGP.style.display = "none"
+                                else
+                                    priceGP.style.display = "block"
+                            }
+                            checkIsFree()
+                            isFreeCB.addEventListener("change", function () {
+                                checkIsFree()
+                            })
+                        </script>
+                        <% if(plan){ %>
+                            <input type="hidden" name="plan_id" value="<%= plan.id %>">
+                            <% } %>
+                                <button type="submit" class="button1">
+                                    <% if(plan){ %>Save<% }else { %>Submit<% } %>
+                                </button>
+                                <% if(plan){ %><a href="/admin/plans/delete?plan_id=<%=plan.id%>" class="button1"
+                                        style="background-color: rgb(211, 0, 0); color:white; margin-left: 1rem;">Delete</a>
+                                    <% } %>
+
+                </form>
+
+            </div>
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <%- include("../../fragments/end.ejs") %>

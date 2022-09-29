@@ -1,0 +1,32 @@
+@use "../base/mixins";
+@use "../base/colors";
+
+
+.alert-banner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    border-radius: 5px;
+    background-color: colors.$orangePrimaryColor;
+    padding: 0.5rem;
+    padding-inline: 3rem;
+
+    svg {
+        width: 25px;
+
+        color: rgb(255, 255, 255);
+    }
+
+    &__icon {
+        height: 25px;
+        width: 25px;
+    }
+
+    &__content {}
+
+    &__close {}
+}

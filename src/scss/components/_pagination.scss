@@ -1,0 +1,13 @@
+@use "../base/colors";
+
+.pagination {
+    >a {
+        margin-left: 1rem;
+        background-color: white;
+    }
+
+    &__highlight {
+        background-color: colors.$orangePrimaryColor !important;
+        pointer-events: none;
+    }
+}

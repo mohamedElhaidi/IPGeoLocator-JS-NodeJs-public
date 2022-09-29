@@ -1,0 +1,5 @@
+<% let chart_rand_id="chart" + (Math.random() * 99999).toFixed(0) %>
+    <canvas id="<%= chart_rand_id %>" max-width="100%" max-height="100%" min-width="100%" min-height="100%"></canvas>
+    <script>
+        const <%= chart_rand_id %> = new Chart(document.getElementById("<%= chart_rand_id %>").getContext("2d"), <%- JSON.stringify(options) %>);
+    </script>

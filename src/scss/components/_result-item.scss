@@ -1,0 +1,79 @@
+@use "../base/colors";
+
+.result-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    gap: 1rem;
+    // text-transform: uppercase;
+    text-align: start;
+    transition-duration: 100ms;
+    color: white;
+    background-color: colors.$bluePrimaryColor;
+    padding: 1rem;
+
+    &:hover {
+        background-color: darken(colors.$blueSecondaryColor, 1);
+
+        button {
+            display: block;
+        }
+    }
+
+
+    &> :first-child {
+        flex: 1;
+        font-weight: 600;
+        color: rgb(216, 255, 110);
+
+        // &::after {
+        //     content: ":";
+        // }
+    }
+
+    &> :nth-child(2) {
+        flex: 1;
+        font-weight: 300;
+    }
+
+
+
+    button {
+        display: none;
+        --width: 1.7em;
+        width: var(--width);
+        height: var(--width);
+        margin-left: auto;
+
+
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: white;
+
+
+
+        svg {
+
+            width: var(--width);
+            height: var(--width);
+        }
+
+        &> :nth-child(2) {
+            opacity: 0;
+        }
+
+
+
+        &:hover {
+            color: rgb(100, 255, 53);
+
+        }
+    }
+
+
+}

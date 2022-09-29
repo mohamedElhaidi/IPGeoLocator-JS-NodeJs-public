@@ -1,0 +1,75 @@
+<%- include("../fragments/head.ejs") %>
+    <section class="page-section">
+        <h2 class="page-section__title">Features</h2>
+        <div class="features page-section__content">
+            <div class="features__wrap">
+                <div class="feature-card">
+                    <h2 class="feature-card__title">Peformance</h2>
+                    <img src="https://cdn3d.iconscout.com/3d/premium/thumb/team-working-on-ui-design-5581375-4674252.png"
+                        class="feature-card__img">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ad quo ipsam voluptates unde
+                        quasi.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h2 class="feature-card__title">Secure</h2>
+                    <img src="https://cdn3d.iconscout.com/3d/premium/thumb/team-working-on-ui-design-5581375-4674252.png"
+                        class="feature-card__img">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ad quo ipsam voluptates unde
+                        quasi.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h2 class="feature-card__title">Cheaper</h2>
+                    <img src="https://cdn3d.iconscout.com/3d/premium/thumb/team-working-on-ui-design-5581375-4674252.png"
+                        class="feature-card__img">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ad quo ipsam voluptates unde
+                        quasi.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="pricing page-section">
+        <h2 class="page-section__title">pricing</h2>
+        <div class="page-section__content">
+            <ul class="prices">
+                <% for(plan of plans){%>
+                    <li class="prices__item">
+                        <div class="price-card"
+                            style="background-color:<% if(plan.isFree) {%> rgb(229, 239, 255) <%}else{%> rgb(183, 217, 111) <%}%>;">
+                            <h1>
+                                <%= plan.title %>
+                            </h1>
+                            <ul>
+                                <% for(feature of plan.features){%>
+                                    <li>
+                                        <div class="checkBox"></div>
+                                        <%= feature.title %>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                            <h2>
+                                starting from
+                            </h2>
+                            <div class="price" data-original-price="<%= plan.price %>$">
+                                <%= plan.price - ((plan.price * plan.discount) / 100) %>$
+                            </div>
+                            <%if(!plan.isFree){%>
+                                <a href="/auth/register?plan_id=<%= plan.id%>" class="button1"
+                                    style="background-color: rgb(169, 72, 235); color: #fff;">Register</a>
+                                <%}else{%>
+                                    <a href="/docs" class="button1"
+                                        style="background-color: rgb(141, 141, 141); color: #fff;">Get Started</a>
+                                    <%}%>
+                        </div>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+        <%- include("../components/subscriptionModal.ejs") %>
+    </section>
+
+    <%- include("../fragments/end.ejs") %>

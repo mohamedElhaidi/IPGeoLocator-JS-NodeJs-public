@@ -1,0 +1,37 @@
+<div class="--full-width">
+    <div style="max-width: 300px;">
+        <form style="display: flex;justify-content: center;align-items: center; gap: 1rem;"
+            action="<%= url%>" method="get">
+            <div class="group">
+                <input type="text" id="search" name="search" value="<%= table.search %>">
+            </div>
+            <button class="button1" type="submit">Search</button>
+        </form>
+    </div>
+    <table class="--full-width">
+        <thead>
+            <tr>
+                <% for(th of table.heads){%>
+                    <th>
+                        <%= th %>
+                    </th>
+                    <% } %>
+
+            </tr>
+        </thead>
+        <tbody>
+            <% for(row of table.rows){ %>
+                <tr>
+                    <% if(row.cols) for(col of row.cols){%>
+                        <td>
+                            <%- col %>
+                        </td>
+                        <% }%>
+                </tr>
+                <% } %>
+        </tbody>
+
+
+    </table>
+    <%- include("./pagination.ejs" , {pagination : table.pagination , query: query || "" }) %>
+</div>

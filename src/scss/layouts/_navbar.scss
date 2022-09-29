@@ -1,0 +1,204 @@
+@use "../base/mixins";
+@use "../base/colors";
+
+
+
+.navBar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    max-height: 50px;
+
+    background-color: transparentize(colors.$navbarColor, 0.5);
+    padding-inline: 5%;
+    backdrop-filter: blur(7px);
+
+    border-bottom-left-radius: 14.499999999999988px;
+    border-bottom-right-radius: 14.399999999999977px;
+
+    // box-shadow: 0 0 0 100vmax var(--navbarBgColor);
+    // clip-path: inset(0 -100vmax);
+
+    a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
+        text-transform: capitalize;
+    }
+}
+
+.nav-toggle {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    >* {
+        width: 100%;
+        height: 3px;
+        background-color: colors.$bluePrimaryColor;
+        border-radius: 3px;
+    }
+
+    @include mixins.responsive(tablet) {
+        display: none;
+    }
+
+    &:focus {}
+}
+
+
+
+.navigation {
+
+    &__menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        list-style: none;
+        font-size: 1rem;
+        background-color: inherit;
+
+        @include mixins.responsive(tablet) {
+            display: flex;
+            flex-direction: row;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        &.toggle {
+            background-color: rgba(82, 151, 255, 1);
+            position: fixed;
+            top: 0;
+            right: 0;
+            display: flex;
+
+            width: 50vw;
+            height: 100vh;
+            z-index: 2;
+        }
+
+        &.toggle+.bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.418);
+        }
+
+
+        >li {
+            cursor: pointer;
+            color: var(--navbarColor);
+            border-radius: 50px;
+            
+            >a {
+                padding-inline: 2rem;
+            padding-block: 0.5rem;
+            }
+
+            &.active {
+                background-color: colors.$orangePrimaryColor;
+                color: white
+            }
+
+            @include mixins.responsive(tablet) {
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.788);
+                    color: rgb(0, 0, 0);
+                }
+            }
+        }
+
+        &__item-menu {
+            position: relative;
+            text-align: center;
+
+            &:focus {
+                background-color: orange;
+            }
+
+            &__menu {
+
+                @include mixins.responsive(tablet) {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    padding-top: 1em;
+                    // background-color: black;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: -0.6em;
+                        left: 38%;
+                        z-index: 2;
+                        display: block;
+                        width: 0;
+                        height: 0;
+                        border: solid 0.8em transparent;
+                        border-bottom: solid 0.8em rgb(255, 255, 255); // background-color: rgb(255, 4, 4);
+                    }
+                }
+
+                ul {
+                    position: relative;
+                    padding: 0.5em;
+                    border-radius: 5px;
+                    color: black;
+                    box-shadow: #076af099 0 0 15px;
+                    display: none;
+
+                    @include mixins.responsive(tablet) {
+                        display: block;
+                        background: rgb(255, 255, 255);
+                    }
+
+                    li {
+                        padding-block: 0.5em;
+                        text-transform: capitalize;
+
+                        >* {
+                            padding-inline: 2em;
+                            border-radius: 2em;
+                        }
+
+                        &:hover {
+                            color: white;
+                            background-color: rgba(0, 0, 0, 0.562);
+                        }
+                    }
+                }
+
+
+            }
+
+            &:hover &__menu {
+                display: block;
+            }
+        }
+    }
+}

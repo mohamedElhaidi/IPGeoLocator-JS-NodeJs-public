@@ -1,0 +1,30 @@
+<%- include("../../fragments/head.ejs") %>
+
+
+    <div class="pricing page-section">
+        <h1 class="page-section__title">API Documentation</h1>
+        <div class="page-section__content">
+            <article>
+                <section>
+                    <h2>Overview</h2>
+                    <p>This documentation is intended for developers who want to write applications that can query
+                        IP-API.
+                        We serve our data in multiple formats via a simple URL-based interface over HTTP, which enables
+                        you to use our data directly from a user's browser or from your server.</p>
+
+                </section>
+                <section>
+                    <h2>Formats</h2>
+                    <p>Response formats</p>
+                    <ul>
+                        <li><a href="/docs/JSON">&#8594 JSON</a></li>
+                        <li><a href="/docs/XML">&#8594 XML</a></li>
+                        <li><a href="/docs/CSV">&#8594 CSV</a></li>
+                        <li><a href="/docs/NewLine">&#8594 NewLine</a></li>
+                    </ul>
+                </section>
+            </article>
+        </div>
+    </div>
+
+    <%- include("../../fragments/end.ejs") %>
